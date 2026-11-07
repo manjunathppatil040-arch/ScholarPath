@@ -84,8 +84,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
     const now = new Date();
     return evaluatedScholarships
       .filter(item => item.data.status !== 'none' && item.data.status !== 'submitted' && item.data.status !== 'awaiting_result' && item.scholarship.applicationStatus === 'Applications Open')
+      .filter(item => item.scholarship.deadline)
       .map(item => {
-        const d = new Date(item.scholarship.deadline);
+        const d = new Date(item.scholarship.deadline!);
         const diffDays = Math.ceil((d.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
         return { ...item, diffDays };
       })

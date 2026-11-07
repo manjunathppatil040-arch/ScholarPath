@@ -103,7 +103,7 @@ export interface Scholarship {
   awardDisplay: string;
   awardFrequency: 'Per Annum' | 'One-Time Grant' | 'Per Month' | 'Entire Course Duration';
   awardType: 'Merit-based' | 'Need-cum-Merit' | 'Girls in STEM' | 'Crisis Support' | 'Vocational / ITI';
-  deadline: string; // ISO format "2026-10-31"
+  deadline: string | null; // ISO date when verified; null when the provider has not published it
   deadlineDisplay: string; // "31 October 2026"
   applicationStatus: 'Applications Open' | 'Upcoming' | 'Closed' | 'Unknown';
   educationStages: EducationStage[];

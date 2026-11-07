@@ -127,6 +127,7 @@ export const DiscoveryView: React.FC<DiscoveryViewProps> = ({
 
       // 7. Deadline Filter
       if (filters.deadlineFilter !== 'all') {
+        if (!scholarship.deadline) return false;
         const deadlineDate = new Date(scholarship.deadline);
         const now = new Date();
         const diffDays = Math.ceil((deadlineDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
@@ -164,7 +165,9 @@ export const DiscoveryView: React.FC<DiscoveryViewProps> = ({
         return b.scholarship.awardAmountRupees - a.scholarship.awardAmountRupees;
       }
       if (filters.sortBy === 'soonest-deadline') {
-        return new Date(a.scholarship.deadline).getTime() - new Date(b.scholarship.deadline).getTime();
+        const aDeadline = a.scholarship.deadline ? new Date(a.scholarship.deadline).getTime() : Number.POSITIVE_INFINITY;
+        const bDeadline = b.scholarship.deadline ? new Date(b.scholarship.deadline).getTime() : Number.POSITIVE_INFINITY;
+        return aDeadline - bDeadline;
       }
       if (filters.sortBy === 'award-high') {
         return b.scholarship.awardAmountRupees - a.scholarship.awardAmountRupees;
@@ -236,6 +239,17 @@ export const DiscoveryView: React.FC<DiscoveryViewProps> = ({
           <strong>Important:</strong> Scholarship information can change. Confirm eligibility, deadlines, and application instructions on the linked provider or application portal. A match does not guarantee an award.
         </div>
       </div>
+
+      <section aria-label="Official scholarship sources" className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-4 sm:p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h2 className="font-semibold text-sm text-emerald-950">Check the latest opportunities</h2>
+          <p className="text-xs text-emerald-900 mt-1 max-w-2xl">This curated demo catalog is reviewed manually; it does not update in the background. For a broader, current search, use the official portals directly.</p>
+        </div>
+        <div className="flex flex-wrap gap-2 shrink-0">
+          <a href="https://scholarships.gov.in/All-Scholarships" target="_blank" rel="noreferrer" className="rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 px-3 py-2 text-xs font-semibold">Government portal ↗</a>
+          <a href="https://scholarships.reliancefoundation.org/" target="_blank" rel="noreferrer" className="rounded-xl bg-white text-emerald-950 hover:bg-emerald-100 border border-emerald-300 px-3 py-2 text-xs font-semibold">Private foundation ↗</a>
+        </div>
+      </section>
 
       {/* Search and Filter Panel */}
       <div className="bg-white rounded-2xl border border-stone-200/90 p-4 sm:p-5 shadow-sm space-y-4">

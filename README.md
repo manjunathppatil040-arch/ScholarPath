@@ -23,6 +23,6 @@ ScholarPath does not submit applications. Statuses, checklists, and any personal
 
 ## Scholarship data
 
-The small catalog lives in [`src/data/scholarships.ts`](src/data/scholarships.ts). Current entries link to the National Scholarship Portal and Ministry of Social Justice and Empowerment information. Application status and criteria can change, so confirm them at the linked official source before applying. A match is guidance only and does not guarantee an award.
+The curated catalog lives in [`src/data/scholarships.ts`](src/data/scholarships.ts). Entries link to official government or provider pages and include a last-checked date. This is a static demo: it does not fetch updates or cover every central, state, or private scholarship each day. Use the official links in Discovery for the complete, current listings. Confirm eligibility, dates, award amounts, documents, and instructions with the provider before applying.
 
-Some current-cycle details are deliberately marked “Not verified” where the available official source only confirms an earlier cycle. An Apply button is shown only for a verified application destination.
+Some details are deliberately marked “Not verified” where a current official source does not confirm them. An Apply button is shown only for a verified application destination. The in-app ScholarPath Guide is a small deterministic helper using the local catalog and browser profile; it is not an AI service, and it does not submit applications.

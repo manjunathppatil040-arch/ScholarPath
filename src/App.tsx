@@ -24,6 +24,7 @@ import { ProfileView } from './components/ProfileView';
 import { ScholarshipDetailModal } from './components/ScholarshipDetailModal';
 import { ComparisonModal } from './components/ComparisonModal';
 import { Footer } from './components/Footer';
+import { ChatBuddy } from './components/ChatBuddy';
 import { Sparkles } from 'lucide-react';
 
 export function App() {
@@ -360,6 +361,12 @@ export function App() {
         setCurrentTab(tab);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }} />
+
+      <ChatBuddy
+        scholarships={INDIAN_SCHOLARSHIPS}
+        profile={profile}
+        onOpenProfile={() => setCurrentTab('profile')}
+      />
 
     </div>
   );
