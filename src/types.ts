@@ -70,6 +70,8 @@ export interface StudentProfile {
   gender: GenderPreference | '';
   previousScorePercentage: number | ''; // e.g. 78% in 10th or 12th
   socialCategory?: 'SC' | 'OBC' | 'EBC' | 'DNT' | 'Other / not listed' | '';
+  /** Explicitly marked fictional values used only when a visitor chooses the guided demo. */
+  isDemoProfile?: boolean;
 }
 
 export type MatchCategory = 'likely' | 'possible' | 'mismatch';

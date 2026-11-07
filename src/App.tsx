@@ -13,7 +13,8 @@ import {
   saveUserScholarshipData,
   getOrCreateItemData,
   clearAllLocalData,
-  EMPTY_PROFILE
+  EMPTY_PROFILE,
+  DEMO_PROFILE
 } from './utils/storage';
 import { Navbar } from './components/Navbar';
 import { Dashboard } from './components/Dashboard';
@@ -36,9 +37,17 @@ export function App() {
 
   // Sync profile to localStorage
   const handleSaveProfile = (newProfile: StudentProfile) => {
-    setProfile(newProfile);
-    saveProfile(newProfile);
+    const savedProfile = { ...newProfile, isDemoProfile: false };
+    setProfile(savedProfile);
+    saveProfile(savedProfile);
     showToast('Profile updated! Match guidance recalculated.');
+  };
+
+  const handleTryDemo = () => {
+    setProfile(DEMO_PROFILE);
+    saveProfile(DEMO_PROFILE);
+    setCurrentTab('discovery');
+    showToast('Fictional demo profile loaded. Edit or clear it in Profile.');
   };
 
   // Sync user data to localStorage
@@ -252,6 +261,7 @@ export function App() {
             onNavigateToTracker={() => setCurrentTab('tracker')}
             onNavigateToSaved={() => setCurrentTab('saved')}
             onNavigateToProfile={() => setCurrentTab('profile')}
+            onTryDemo={handleTryDemo}
             onSelectScholarship={(s) => setSelectedScholarship(s)}
             onToggleSave={handleToggleSave}
             onStatusChange={handleStatusChange}

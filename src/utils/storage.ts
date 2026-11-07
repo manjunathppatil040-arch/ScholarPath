@@ -16,6 +16,20 @@ export const EMPTY_PROFILE: StudentProfile = {
   socialCategory: ''
 };
 
+/** Clearly fictional starter values. No saved items, statuses, or checklist progress are seeded. */
+export const DEMO_PROFILE: StudentProfile = {
+  fullName: 'Demo Student',
+  educationStage: 'Undergraduate',
+  courseField: 'Engineering & Technology',
+  state: 'Karnataka',
+  studyYear: '1st Year (Fresher)',
+  incomeRange: 'Below ₹1,50,000',
+  gender: '',
+  previousScorePercentage: '',
+  socialCategory: 'OBC',
+  isDemoProfile: true
+};
+
 export function loadProfile(): StudentProfile {
   try {
     const raw = localStorage.getItem(PROFILE_KEY);

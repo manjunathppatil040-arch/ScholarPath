@@ -28,7 +28,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
   useEffect(() => setFormData({ ...profile }), [profile]);
 
   // Profile readiness score
-  const completenessItems = [Boolean(formData.educationStage), Boolean(formData.state)];
+  const completenessItems = [Boolean(formData.educationStage), Boolean(formData.courseField), Boolean(formData.state)];
   const completedFields = completenessItems.filter(Boolean).length;
   const completenessPercent = Math.round((completedFields / completenessItems.length) * 100);
 
@@ -60,6 +60,12 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
         </p>
       </div>
 
+      {formData.isDemoProfile && (
+        <div role="status" className="rounded-2xl border border-sky-300 bg-sky-50 p-4 text-sm text-sky-950">
+          <strong>Fictional demo profile.</strong> These sample values help demonstrate matching and are stored only in this browser. Edit and save your own details, or clear them any time.
+        </div>
+      )}
+
       {/* Browser Storage Guarantee Banner */}
       <div className="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5">
         <div className="w-9 h-9 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center shrink-0 text-emerald-800">
@@ -78,7 +84,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
       {/* Profile Readiness Meter */}
       <div className="bg-white rounded-2xl border border-stone-200 p-4 sm:p-5 shadow-sm space-y-2">
         <div className="flex items-center justify-between text-xs font-semibold">
-          <span className="text-stone-700">Profile Readiness for Match Guidance:</span>
+          <span className="text-stone-700">Core profile details complete:</span>
           <span className="text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
             {completenessPercent}% complete ({completedFields} of {completenessItems.length} fields)
           </span>

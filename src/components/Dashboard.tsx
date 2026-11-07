@@ -26,6 +26,7 @@ interface DashboardProps {
   onNavigateToTracker: () => void;
   onNavigateToSaved: () => void;
   onNavigateToProfile: () => void;
+  onTryDemo: () => void;
   onSelectScholarship: (scholarship: Scholarship) => void;
   onToggleSave: (id: string, e: React.MouseEvent) => void;
   onStatusChange: (id: string, status: ApplicationStage, e: React.MouseEvent) => void;
@@ -39,6 +40,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
   onNavigateToTracker,
   onNavigateToSaved,
   onNavigateToProfile,
+  onTryDemo,
   onSelectScholarship,
 }) => {
   // Compute match for all Indian scholarships
@@ -117,20 +119,20 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
           <div className="pt-3 flex flex-wrap items-center gap-3">
             <button
-              onClick={onNavigateToDiscovery}
+              onClick={profile.educationStage ? onNavigateToDiscovery : onNavigateToProfile}
               className="px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-stone-950 font-bold rounded-2xl text-sm transition-all shadow-lg hover:shadow-emerald-500/20 flex items-center gap-2 transform active:scale-95"
             >
               <Compass className="w-4 h-4" />
-              <span>Find Scholarships for Me</span>
+              <span>{profile.educationStage ? 'Find Scholarships for Me' : 'Set Up My Profile'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
             <button
-              onClick={onNavigateToProfile}
+              onClick={profile.educationStage ? onNavigateToProfile : onTryDemo}
               className="px-5 py-3.5 bg-white/10 hover:bg-white/15 text-cream-100 font-semibold rounded-2xl text-sm transition-all border border-white/15 flex items-center gap-2"
             >
               <GraduationCap className="w-4 h-4 text-emerald-300" />
-              <span>Update Student Profile</span>
+              <span>{profile.educationStage ? 'Update Student Profile' : 'Explore with Demo Profile'}</span>
             </button>
           </div>
         </div>
