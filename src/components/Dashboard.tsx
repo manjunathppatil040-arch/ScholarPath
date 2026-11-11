@@ -110,12 +110,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <span>Honest Indian Scholarship Discovery</span>
           </div>
 
+          <p className="text-emerald-200 text-sm font-semibold">Namaste, {greetingName}</p>
           <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-cream-50 leading-[1.15]">
-            Namaste, {greetingName}. Let’s find the right aid for you.
+            Your Future. Your Scholarship. Your Path.
           </h1>
 
           <p className="text-stone-300 text-sm sm:text-base leading-relaxed">
-            Quickly answer four key questions: <em>Is this likely to fit me? What documents should I prepare? When is the deadline? Where do I apply?</em>
+            Discover scholarships, understand the listed criteria, organize your preparation and track your next steps. Confirm current details with the official provider before applying.
           </p>
 
           <div className="pt-3 flex flex-wrap items-center gap-3">
@@ -294,6 +295,33 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
         </div>
 
+      </section>
+
+      <section aria-labelledby="journey-heading" className="space-y-4">
+        <div>
+          <h2 id="journey-heading" className="font-serif text-xl sm:text-2xl font-bold text-stone-900">A clearer path from search to application</h2>
+          <p className="text-xs sm:text-sm text-stone-600 mt-1">Use a few practical steps to move from finding support to preparing an application.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <article className="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm space-y-3">
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-emerald-50 text-emerald-800 font-bold text-sm">01</span>
+            <h3 className="font-semibold text-stone-900">Discover opportunities</h3>
+            <p className="text-xs leading-relaxed text-stone-600">Search the curated catalog by study stage, field, support type, and closing date.</p>
+            <button type="button" onClick={onNavigateToDiscovery} className="text-xs font-semibold text-emerald-900 hover:text-emerald-700">Explore scholarships →</button>
+          </article>
+          <article className="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm space-y-3">
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-amber-50 text-amber-800 font-bold text-sm">02</span>
+            <h3 className="font-semibold text-stone-900">Understand your fit</h3>
+            <p className="text-xs leading-relaxed text-stone-600">See which listed criteria fit your profile and what still needs confirmation from the provider.</p>
+            <button type="button" onClick={onNavigateToProfile} className="text-xs font-semibold text-emerald-900 hover:text-emerald-700">Review my profile →</button>
+          </article>
+          <article className="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm space-y-3">
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-sky-50 text-sky-800 font-bold text-sm">03</span>
+            <h3 className="font-semibold text-stone-900">Keep your next steps visible</h3>
+            <p className="text-xs leading-relaxed text-stone-600">Save opportunities, add preparation reminders, and track your application stage in this browser.</p>
+            <button type="button" onClick={onNavigateToTracker} className="text-xs font-semibold text-emerald-900 hover:text-emerald-700">Open application tracker →</button>
+          </article>
+        </div>
       </section>
 
       {/* Visual Application Stage Pipeline */}

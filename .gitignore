@@ -7,3 +7,7 @@ dist/
 .DS_Store
 Thumbs.db
 .vite/
+backend/.venv/
+backend/*.db
+__pycache__/
+.pytest_cache/
